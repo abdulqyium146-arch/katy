@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-dm-serif: 'DM Serif Display', Georgia, serif;
+    --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text-main font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2 {
+    @apply font-serif;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-bold;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .direct-answer {
+    @apply bg-blue-50 border-l-4 border-accent p-4 my-6 rounded-r-lg;
+  }
+
+  .section-label {
+    @apply text-accent text-xs font-semibold uppercase tracking-widest mb-2 block;
+  }
+
+  .prose-local h2 {
+    @apply font-serif text-2xl sm:text-3xl text-primary font-bold mt-10 mb-4;
+  }
+
+  .prose-local h3 {
+    @apply font-sans font-bold text-xl text-primary mt-6 mb-3;
+  }
+
+  .prose-local p {
+    @apply text-text-main text-base leading-relaxed mb-4;
+  }
+
+  .prose-local ul {
+    @apply list-disc pl-5 mb-4 space-y-2;
+  }
+
+  .prose-local li {
+    @apply text-text-main text-base leading-relaxed;
+  }
+
+  .quick-facts-box {
+    @apply bg-primary/5 border border-primary/10 rounded-xl p-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
