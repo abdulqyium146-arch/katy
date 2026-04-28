@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import ContactForm from './ContactForm'
+import { generateContactPageSchema, generateBreadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'Free Local SEO Audit Katy TX | Contact | Get Started',
   description:
-    'Request your free local SEO audit for your Katy, TX business. No commitment. Get a clear picture of where you stand on Google in 48 hours.',
+    'Request your free local SEO audit for your Katy, TX business. No commitment. Clear picture of your Google rankings in 48 hours.',
   alternates: { canonical: 'https://localseoexpertskaty.com/contact/' },
   openGraph: {
     title: 'Free Local SEO Audit Katy TX | Contact | Get Started',
-    description:
-      'Request your free local SEO audit for your Katy, TX business. No commitment. Get a clear picture of where you stand on Google in 48 hours.',
+    description: 'Request your free local SEO audit for your Katy, TX business. No commitment.',
     url: 'https://localseoexpertskaty.com/contact/',
     siteName: 'Local SEO Experts Katy',
     locale: 'en_US',
@@ -24,5 +24,17 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  return <ContactForm />
+  const contactSchema = generateContactPageSchema()
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://localseoexpertskaty.com/' },
+    { name: 'Contact', url: 'https://localseoexpertskaty.com/contact/' },
+  ])
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <ContactForm />
+    </>
+  )
 }

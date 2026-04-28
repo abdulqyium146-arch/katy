@@ -13,10 +13,7 @@ interface BreadcrumbNavProps {
 
 export default function BreadcrumbNav({ items, className = '' }: BreadcrumbNavProps) {
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className={`text-sm text-muted py-3 ${className}`}
-    >
+    <nav aria-label="Breadcrumb" className={`text-sm text-muted py-3 ${className}`}>
       <ol className="flex items-center flex-wrap gap-1">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
@@ -28,13 +25,10 @@ export default function BreadcrumbNav({ items, className = '' }: BreadcrumbNavPr
                 </span>
               ) : (
                 <>
-                  <Link
-                    href={item.href}
-                    className="hover:text-accent transition-colors"
-                  >
+                  <Link href={item.href} className="hover:text-accent transition-colors">
                     {item.label}
                   </Link>
-                  <ChevronRight size={13} className="text-border" aria-hidden="true" />
+                  <ChevronRight size={12} className="text-border" aria-hidden="true" />
                 </>
               )}
             </li>

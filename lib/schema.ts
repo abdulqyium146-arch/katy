@@ -1,19 +1,18 @@
-export function generateLocalBusinessSchema() {
+export function generateLocalBusinessSchema(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://localseoexpertskaty.com/#business',
     name: 'Local SEO Experts Katy',
     description:
-      'Expert local SEO services for Katy, TX businesses. Google Business Profile optimization, Google Maps ranking, local citation building, and on-page local SEO.',
+      'Local SEO specialist serving Katy, TX and Greater Houston. Google Maps ranking, GBP optimization, local citation building, and local search services.',
     url: 'https://localseoexpertskaty.com',
-    telephone: '(832) 000-0000',
+    telephone: '+18320000000',
     email: 'info@localseoexpertskaty.com',
     priceRange: '$$',
     image: 'https://localseoexpertskaty.com/og-home.jpg',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '',
       addressLocality: 'Katy',
       addressRegion: 'TX',
       postalCode: '77494',
@@ -22,9 +21,9 @@ export function generateLocalBusinessSchema() {
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 29.7858,
-      longitude: -95.8244,
+      longitude: -95.8245,
     },
-    serviceArea: [
+    areaServed: [
       { '@type': 'City', name: 'Katy', sameAs: 'https://en.wikipedia.org/wiki/Katy,_Texas' },
       { '@type': 'City', name: 'Cinco Ranch' },
       { '@type': 'City', name: 'Sugar Land' },
@@ -39,6 +38,12 @@ export function generateLocalBusinessSchema() {
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         opens: '09:00',
         closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '10:00',
+        closes: '14:00',
       },
     ],
     aggregateRating: {
@@ -59,26 +64,29 @@ export function generateLocalBusinessSchema() {
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Review Generation & Management' } },
       ],
     },
-    sameAs: ['https://localseoexpertskaty.com'],
+    sameAs: ['https://www.linkedin.com/company/local-seo-experts-katy'],
   }
 }
 
-export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+export function generateFAQSchema(
+  faqs: { question: string; answer: string }[]
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
     })),
   }
 }
 
-export function generateServiceSchema(name: string, description: string, url: string) {
+export function generateServiceSchema(
+  name: string,
+  description: string,
+  url: string
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -101,7 +109,7 @@ export function generateServiceSchema(name: string, description: string, url: st
   }
 }
 
-export function generatePersonSchema() {
+export function generatePersonSchema(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -109,7 +117,7 @@ export function generatePersonSchema() {
     name: 'Local SEO Expert',
     jobTitle: 'Local SEO Specialist',
     description:
-      'A local SEO specialist based in Katy, TX with 6+ years of experience ranking local businesses on Google Maps and local search.',
+      'A dedicated local SEO specialist based in Katy, TX with 6+ years of experience ranking local businesses on Google Maps and local search.',
     worksFor: {
       '@type': 'LocalBusiness',
       name: 'Local SEO Experts Katy',
@@ -131,23 +139,22 @@ export function generatePersonSchema() {
       'On-Page SEO',
       'Review Generation',
     ],
-    areaServed: { '@type': 'City', name: 'Katy', containedIn: { '@type': 'State', name: 'Texas' } },
   }
 }
 
 export function generateArticleSchema(
   title: string,
   description: string,
-  date: string,
+  datePublished: string,
   url: string
-) {
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description,
-    datePublished: date,
-    dateModified: date,
+    datePublished,
+    dateModified: datePublished,
     url,
     author: {
       '@type': 'Person',
@@ -159,10 +166,7 @@ export function generateArticleSchema(
       name: 'Local SEO Experts Katy',
       url: 'https://localseoexpertskaty.com',
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     about: [
       { '@type': 'Thing', name: 'Local SEO' },
       { '@type': 'Thing', name: 'Google Business Profile' },
@@ -171,7 +175,9 @@ export function generateArticleSchema(
   }
 }
 
-export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -184,7 +190,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
   }
 }
 
-export function generateWebSiteSchema() {
+export function generateWebSiteSchema(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -199,6 +205,30 @@ export function generateWebSiteSchema() {
         urlTemplate: 'https://localseoexpertskaty.com/?s={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
+export function generateContactPageSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Local SEO Experts Katy — Free Audit',
+    url: 'https://localseoexpertskaty.com/contact/',
+    description:
+      'Request a free local SEO audit for your Katy, TX business. No commitment. Response within 48 hours.',
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      name: 'Local SEO Experts Katy',
+      telephone: '+18320000000',
+      email: 'info@localseoexpertskaty.com',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Katy',
+        addressRegion: 'TX',
+        postalCode: '77494',
+        addressCountry: 'US',
+      },
     },
   }
 }

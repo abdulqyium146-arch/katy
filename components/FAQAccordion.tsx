@@ -17,47 +17,34 @@ export default function FAQAccordion({ items, className = '' }: FAQAccordionProp
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <div className={`divide-y divide-border ${className}`} itemScope itemType="https://schema.org/FAQPage">
+    <div className={`divide-y divide-border ${className}`}>
       {items.map((item, index) => {
         const isOpen = openIndex === index
         return (
-          <div
-            key={index}
-            itemScope
-            itemProp="mainEntity"
-            itemType="https://schema.org/Question"
-          >
+          <div key={index}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="w-full flex items-center justify-between gap-4 py-4 text-left"
               aria-expanded={isOpen}
             >
-              <span
-                className="font-sans font-semibold text-primary text-base leading-snug"
-                itemProp="name"
-              >
+              <span className="font-sans font-semibold text-primary text-base leading-snug">
                 {item.question}
               </span>
-              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center">
+              <span className="w-7 h-7 flex-shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
                 {isOpen ? (
-                  <Minus size={14} className="text-accent" />
+                  <Minus size={13} className="text-accent" />
                 ) : (
-                  <Plus size={14} className="text-accent" />
+                  <Plus size={13} className="text-accent" />
                 )}
               </span>
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ${
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
                 isOpen ? 'max-h-96 pb-4' : 'max-h-0'
               }`}
-              itemScope
-              itemProp="acceptedAnswer"
-              itemType="https://schema.org/Answer"
             >
-              <p className="text-muted text-sm leading-relaxed" itemProp="text">
-                {item.answer}
-              </p>
+              <p className="text-muted text-sm leading-relaxed">{item.answer}</p>
             </div>
           </div>
         )

@@ -28,7 +28,7 @@ export default function CTABanner({
         )}
         <Link
           href={buttonHref}
-          className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-accent font-bold text-base rounded-md hover:bg-blue-50 transition-colors shadow-lg"
+          className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-accent font-bold text-base rounded-lg hover:bg-blue-50 transition-colors shadow-lg"
         >
           {buttonText}
         </Link>

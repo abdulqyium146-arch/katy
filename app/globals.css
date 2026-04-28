@@ -46,6 +46,11 @@
     @apply text-accent text-xs font-semibold uppercase tracking-widest mb-2 block;
   }
 
+  .quick-facts-box {
+    @apply bg-primary/5 border border-primary/10 rounded-xl p-6;
+  }
+
+  /* Blog / long-form prose */
   .prose-local h2 {
     @apply font-serif text-2xl sm:text-3xl text-primary font-bold mt-10 mb-4;
   }
@@ -66,8 +71,8 @@
     @apply text-text-main text-base leading-relaxed;
   }
 
-  .quick-facts-box {
-    @apply bg-primary/5 border border-primary/10 rounded-xl p-6;
+  .prose-local a {
+    @apply text-accent hover:underline;
   }
 }
 
