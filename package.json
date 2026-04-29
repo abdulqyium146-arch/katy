@@ -6,7 +6,8 @@
     "dev": "cross-env NODE_ENV=development next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
     "lucide-react": "^0.408.0",
